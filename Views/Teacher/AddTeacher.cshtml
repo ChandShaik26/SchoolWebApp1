@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-6">
+        <form method="post" action="/Teacher/SaveChanges">
+            <div class="form-group">
+             
+                <label class="form-label" for="Name">Name</label>
+                <input type="text" class="form-control" name="Name" id="Name" placeholder="Enter your Name">
+
+                <label class="form-label" for="Qualifiaction">Qualification</label>
+                <input type="text" class="form-control" id="Qualification" name="Qualification" placeholder="Enter Qualification">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Save Teacher</button>
+            </div>
+        </form>
+    </div>
+</div>
