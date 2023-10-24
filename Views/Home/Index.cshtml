@@ -1,0 +1,27 @@
+﻿@using OnlineStudentEnrollmentSystem.Entities;
+@model OnlineStudentEnrollmentSystem.Models.DashboardModel
+
+@{
+    Layout = "_Layout";
+}
+
+
+
+<h1 class="text-secondary">Hello</h1>
+<h2 class="text-primary">My School Dashboard</h2>
+
+<div class="row">
+    <div class="col-6">
+      @Html.Partial("_Counter.cshtml", Model)
+    </div>
+    <div class="col-6">
+    </div>
+</div>
+<div class="row" style="margin-top:20px;">
+    <div class="col-6">
+       @Html.Partial("_Classes.cshtml", Model.Classes)
+    </div>
+    <div class="col-6">
+       @Html.Partial("_Teachers.cshtml", Model.Teachers)
+    </div>
+</div>

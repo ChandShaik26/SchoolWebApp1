@@ -1,0 +1,32 @@
+﻿@model OnlineStudentEnrollmentSystem.Models.AddStudentModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="text-center">Edit Student</h1>
+<hr />
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <form method="post" action="/Student/UpdateStudent" class="bg-secondary p-3 mt-5">
+            <div class="form-group">
+                <label class="form-label" for="Name">Name</label>
+                <input type="text" class="form-control" name="Name" id="Name" placeholder="Enter your Name" value="@Model.Name">
+
+                <label class="form-label" for="Gender">Gender</label>
+                <input type="text" class="form-control" id="Gender" name="Gender" placeholder="Enter your gender" value="@Model.Gender">
+            </div>
+
+            <label asp-for="@Model.ClassId" class="form-label"></label>
+            <select asp-for="@Model.ClassId" asp-items="@Model.ClassList" class="form-select"></select>
+            <input type="hidden" id="StudentId" name="StudentId" value="@Model.StudentId">
+
+            <div>
+                <button type="submit" class="btn btn-primary mt-3">Update Student</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-2"></div>
+</div>

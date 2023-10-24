@@ -1,0 +1,40 @@
+﻿@model OnlineStudentEnrollmentSystem.Entities.Class;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@{
+    Layout = "_Layout";
+}
+
+<div>
+    <h2>Class: </h2><p>@Model.Standard </p> <a href="@Url.Action("ClassList","Class")" class="btn btn-warning">Back</a>
+</div>
+
+<h2>Class Details</h2>
+@if(Model.Students != null && Model.Students.Count > 0)
+{
+    <table class="table tabletable-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Gender</th>
+                <th>Phone No</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var student in Model.Students)
+            {
+                <tr id="@student.StudentId">
+                    <td>@student.Name</td>
+                    <td>@student.Gender</td>
+                    <td>@student.PhoneNo</td>
+                </tr>
+            }     
+        </tbody>
+    </table>
+}
+
+else
+{
+    <h4>No student found...</h4>
+}

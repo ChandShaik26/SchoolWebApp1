@@ -1,0 +1,29 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model OnlineStudentEnrollmentSystem.Models.AddStudentModel;
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="row">
+    <div class="col-6">
+        <form method="post" asp-action="SaveChanges" asp-controller="Student">
+            <div class="form-group">
+                <label class="form-label" asp-for="@Model.Name"></label>
+                <input class="form-control" asp-for="@Model.Name" placeholder="Enter your Name">
+
+                <label class="form-label" asp-for="@Model.Gender"></label>
+                <input class="form-control" asp-for="@Model.Gender" placeholder="Enter your gender">
+
+
+                <label for="ClassId" class="form-label">Class Standard</label>
+                <select asp-for="@Model.ClassId" asp-items="@Model.ClassList" class="form-select"></select>
+
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Save Student</button>
+            </div>
+        </form>
+    </div>
+</div>

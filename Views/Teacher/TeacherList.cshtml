@@ -1,0 +1,84 @@
+﻿@using OnlineStudentEnrollmentSystem.Entities;
+@model IList<Teacher>
+
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="text-center pt-3">Teachers List</h1>
+
+<div class="container-fluid">
+   <div class="row">
+       <div class="col-1"></div>
+
+       <div class="col-xxl-9">
+            @if (Model != null && Model.Count > 0)
+            {
+
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-xxl-8">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="table bg-success">
+                                    <th>Teacher Id</th>
+                                    <th>Name</th>
+                                    <th>Qualification</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var teacher in Model)
+                                {
+                                    <tr id="@teacher.TeacherId">
+                                        <td>@teacher.TeacherId</td>
+                                        <td>@teacher.Name</td>
+                                        <td>@teacher.Qualification</td>
+                                        <td class="d-flex justify-content-center">
+                                            <a href="@Url.Action("EditTeacher", "Teacher", new{TeacherId = teacher.TeacherId})" class="btn btn-warning">Edit</a>
+                                            |
+                                            <a href="javascript:0;" onclick="DeleteTeacher(@teacher.TeacherId)" class="btn btn-danger">Delete</a>
+                                            |
+                                            <a href="@Url.Action("TeacherDetail","Teacher", new{TeacherId = teacher.TeacherId})" class="btn btn-info ">View</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-2">
+                        <a href="@Url.Action("AddTeacher", "Teacher")" class="btn btn-primary">Add Teacher</a>
+                    </div>
+                </div>
+
+            }
+            else
+            {
+                <h5>No Teacher..</h5>
+            }
+
+            <script type="text/javascript">
+                function DeleteTeacher(TeacherId) {
+
+
+                    var url = "https://localhost:7155/Teacher/DeleteTeacher";
+
+                    var parameters = { TeacherId: TeacherId };
+
+
+                    $.post(url, parameters, function (data) {
+
+                        alert("Teacher with Id " + TeacherId + " was deleted")
+
+                        $("tr#" + TeacherId).remove();
+                    });
+                }
+            </script>
+       </div>
+       <div class="col-2"></div>
+   </div>
+   </div>
+
+
+
+
