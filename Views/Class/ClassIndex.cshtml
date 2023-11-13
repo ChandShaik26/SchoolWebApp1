@@ -1,0 +1,72 @@
+﻿@using WebApplication1.Entities;
+@model IList<Class>
+
+@{
+    Layout = "_Layout";
+}
+<h1 class="text-center pt-2">Classes List</h1>
+
+<div>
+</div>
+
+@if (Model != null && Model.Count > 0)
+{
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-xxl-8">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr class="table bg-success">
+                        <th>Class Id</th>
+                        <th>Name</th>
+                        <th>Standard</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var variable in Model)
+                    {
+                        <tr id="@variable.ClassId">
+                            <td>@variable.ClassId</td>
+                            <td>@variable.ClassName</td>
+                            <td>@variable.Standard</td>
+                            <td class="d-flex justify-content-center">
+                                <a href="@Url.Action("EditClass","Class", new{ClassId = variable.ClassId})" class="btn btn-warning">Edit</a>
+                                |                             
+                                <a href="javascript:0;" onclick="DeleteClass(@variable.ClassId);" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2">
+            <a href="@Url.Action("AddClass", "Class")" class="btn btn-primary">Add Class</a>
+        </div>
+    </div>
+}
+else
+{
+    <h5>No Class...</h5>
+}
+
+<script type="text/javascript">
+
+    
+    function DeleteClass(ClassId) {
+
+       
+        var url = "https://localhost:7155/Class/DeleteClass";
+
+        var parameters = { classId : ClassId };
+
+        
+       
+        $.post(url, parameters, function (data) {
+            alert("Class with Class-Id " + ClassId + " was removed");
+
+            $("tr#" + ClassId).remove();
+        });
+    }
+</script>

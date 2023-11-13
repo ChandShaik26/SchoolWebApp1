@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore;
 using OnlineStudentEnrollmentSystem.Entities;
 using OnlineStudentEnrollmentSystem.Models;
@@ -8,6 +9,16 @@ namespace OnlineStudentEnrollmentSystem
     public class TeacherController : Controller
     {
         public IActionResult TeacherList()
+=======
+using WebApplication1.Entities;
+using WebApplication1.Models;
+
+namespace WebApplication1
+{
+    public class TeacherController : Controller
+    {
+        public IActionResult Teaching()
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         {
             var dbContext = new SchoolDBContext();
 
@@ -35,7 +46,11 @@ namespace OnlineStudentEnrollmentSystem
             dbContext.Teachers.Add(teacher);
             dbContext.SaveChanges();
 
+<<<<<<< HEAD
             return RedirectToAction("TeacherList");
+=======
+            return RedirectToAction("Teaching");
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
 
 
         }
@@ -67,7 +82,11 @@ namespace OnlineStudentEnrollmentSystem
             dbContext.Update(teacherObj);
             dbContext.SaveChanges();
 
+<<<<<<< HEAD
             return RedirectToAction("TeacherList");
+=======
+            return RedirectToAction("Teaching");
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         }
 
         [HttpPost]
@@ -82,6 +101,7 @@ namespace OnlineStudentEnrollmentSystem
 
             return Json(true);
         }
+<<<<<<< HEAD
 
 
         public IActionResult TeacherDetail(int TeacherId)
@@ -92,5 +112,7 @@ namespace OnlineStudentEnrollmentSystem
 
             return View(teacherObj);
         }
+=======
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
     }
 }

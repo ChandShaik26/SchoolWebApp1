@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
+<<<<<<< HEAD
 namespace OnlineStudentEnrollmentSystem.Entities;
+=======
+namespace WebApplication1.Entities;
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
 
 public partial class SchoolDBContext : DbContext
 {
@@ -57,8 +61,12 @@ public partial class SchoolDBContext : DbContext
             entity.Property(e => e.ClassId).HasColumnName("Class_Id");
             entity.Property(e => e.ClassName)
                 .HasMaxLength(100)
+<<<<<<< HEAD
                 .IsUnicode(false)
                 .HasColumnName("Class_Name");
+=======
+                .IsUnicode(false);
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
             entity.Property(e => e.EmailId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -73,19 +81,25 @@ public partial class SchoolDBContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("Phone_No");
+<<<<<<< HEAD
             entity.Property(e => e.TeacherId).HasColumnName("Teacher_Id");
             entity.Property(e => e.TeacherName)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("Teacher_Name");
+=======
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
 
             entity.HasOne(d => d.Class).WithMany(p => p.Students)
                 .HasForeignKey(d => d.ClassId)
                 .HasConstraintName("FK_Student_Class");
+<<<<<<< HEAD
 
             entity.HasOne(d => d.Teacher).WithMany(p => p.Students)
                 .HasForeignKey(d => d.TeacherId)
                 .HasConstraintName("FK_Student_Teacher");
+=======
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         });
 
         modelBuilder.Entity<Teacher>(entity =>

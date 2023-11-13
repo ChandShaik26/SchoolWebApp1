@@ -1,0 +1,74 @@
+﻿@using WebApplication1.Entities;
+@using WebApplication1.Models;
+@model IList<Student>
+
+@{
+    Layout = "_Layout";
+}
+
+
+    <h1 class="text-center pt-2 ">Students List </h1>
+    <div class="col-4 float-end">
+       
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+
+        <div class="row ">
+        <div class="col-2">
+        </div>
+        <div class="col-xxl-8">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr class="table bg-success">
+                        <th>Student Id</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var variable in Model)
+                    {
+                        <tr id="@variable.StudentId">
+                            <td>@variable.StudentId</td>
+                            <td>@variable.Name</td>
+                            <td>@variable.Gender</td>
+                            <td class="d-flex justify-content-center"> 
+                                <a href="@Url.Action("EditStudent", "Student", new{StudentId = variable.StudentId})" class="btn btn-warning">Edit</a>
+                                |
+                                <a href="javascript:0;" onclick="DeleteStudent(@variable.StudentId)" class="btn btn-danger">Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2">
+            <a href="@Url.Action("AddStudent", "Student")" class="btn btn-primary ">Add Student</a>
+        </div>
+    </div>
+
+}
+else
+{
+    <h5>No student...</h5>
+}
+
+<script type="text/javascript">
+    function DeleteStudent(StudentId) {
+
+        var url = "https://localhost:7155/Student/DeleteStudent";
+
+        var parameters = { studentId : StudentId };
+
+        $.post(url, parameters, function (data) {
+
+            alert("Student with Id: " + StudentId + " was deleted")
+            $("tr#" + StudentId).remove();
+        });
+    }
+</script>
+

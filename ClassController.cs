@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+<<<<<<< HEAD
 using OnlineStudentEnrollmentSystem.Entities;
 using OnlineStudentEnrollmentSystem.Models;
 
@@ -8,13 +9,29 @@ namespace OnlineStudentEnrollmentSystem
     public class ClassController : Controller
     {
         public IActionResult ClassList()
+=======
+using WebApplication1.Entities;
+using WebApplication1.Models;
+
+namespace WebApplication1
+{
+    public class ClassController : Controller
+    {
+        public IActionResult ClassIndex()
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         {
 
             var dbContext = new SchoolDBContext();
 
+<<<<<<< HEAD
             var classes = dbContext.Classes.ToList();
 
             return View(classes);
+=======
+            IList<Class> cs = dbContext.Classes.ToList();
+
+            return View(cs);
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         }
 
         public IActionResult AddClass()
@@ -27,7 +44,11 @@ namespace OnlineStudentEnrollmentSystem
         {
             var classC = new Class();
 
+<<<<<<< HEAD
             classC.ClassId = model.ClassId;
+=======
+            //classC.ClassId = model.ClassId;
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
             classC.ClassName = model.Name;   
             classC.Standard = model.Standard;
 
@@ -36,7 +57,11 @@ namespace OnlineStudentEnrollmentSystem
 
             dbContext.SaveChanges();
 
+<<<<<<< HEAD
             return RedirectToAction("ClassList");
+=======
+            return RedirectToAction("ClassIndex");
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         }
 
         public IActionResult EditClass(int ClassId)
@@ -69,7 +94,11 @@ namespace OnlineStudentEnrollmentSystem
             dbContext.Classes.Update(classObj);
             dbContext.SaveChanges();
 
+<<<<<<< HEAD
             return RedirectToAction("ClassList");
+=======
+            return RedirectToAction("ClassIndex");
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         }
 
 
@@ -85,6 +114,7 @@ namespace OnlineStudentEnrollmentSystem
             return Json(true);
         }
 
+<<<<<<< HEAD
         public IActionResult ClassDetail(int classId)
         {
             var dbContext = new SchoolDBContext();
@@ -94,6 +124,8 @@ namespace OnlineStudentEnrollmentSystem
             return View(classObj);
         }
 
+=======
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
     }
 
 }

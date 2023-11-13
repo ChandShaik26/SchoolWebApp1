@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace OnlineStudentEnrollmentSystem
+=======
+namespace WebApplication1
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
 {
     public class Program
     {

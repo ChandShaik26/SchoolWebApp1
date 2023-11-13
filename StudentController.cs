@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+<<<<<<< HEAD
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using OnlineStudentEnrollmentSystem.Entities;
@@ -10,6 +11,17 @@ namespace OnlineStudentEnrollmentSystem
     public class StudentController : Controller
     {
         public IActionResult StudentList()
+=======
+using System.Runtime.InteropServices;
+using WebApplication1.Entities;
+using WebApplication1.Models;
+
+namespace WebApplication1
+{
+    public class StudentController : Controller
+    {
+        public IActionResult Studying()
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         {
 
             var dbContext = new SchoolDBContext();
@@ -23,8 +35,24 @@ namespace OnlineStudentEnrollmentSystem
         {
             var model = new AddStudentModel();
 
+<<<<<<< HEAD
             model.ClassList = GetClasses();
          
+=======
+            var dbContext = new SchoolDBContext();
+            var classes = dbContext.Classes.ToList();
+
+            if(model.ClassList == null)
+            {
+                model.ClassList = new List<SelectListItem>();
+            }
+
+            foreach(var classObj in classes)
+            {
+                 
+                model.ClassList.Add(new SelectListItem(classObj.ClassName, classObj.ClassId.ToString())); 
+            }
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
             return View(model);
         }
 
@@ -42,7 +70,11 @@ namespace OnlineStudentEnrollmentSystem
             dbContext.Students.Add(student);
             dbContext.SaveChanges();
 
+<<<<<<< HEAD
             return RedirectToAction("StudentList");
+=======
+            return RedirectToAction("Studying");
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
 
         }
 
@@ -54,8 +86,11 @@ namespace OnlineStudentEnrollmentSystem
 
             var model = new AddStudentModel();
 
+<<<<<<< HEAD
             model.ClassList = GetClasses();
 
+=======
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
             model.StudentId = studentObj.StudentId;
             model.Name = studentObj.Name;
             model.Gender = studentObj.Gender;
@@ -77,7 +112,11 @@ namespace OnlineStudentEnrollmentSystem
             dbContext.Students.Update(studentObj);
             dbContext.SaveChanges();
 
+<<<<<<< HEAD
             return RedirectToAction("StudentList");
+=======
+            return RedirectToAction("Studying");
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
         }
 
         [HttpPost]
@@ -92,6 +131,7 @@ namespace OnlineStudentEnrollmentSystem
 
             return Json(true);
         }
+<<<<<<< HEAD
 
         private IList<SelectListItem> GetClasses()
         {
@@ -112,5 +152,7 @@ namespace OnlineStudentEnrollmentSystem
             }
             return classesListItems;
         }
+=======
+>>>>>>> 888fb61ad308486e5a4b7694bdf6bb986f215ab4
     }
 }
